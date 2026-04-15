@@ -82,12 +82,13 @@ app.get('/health', (req, res) => {
 });
 
 // ── API Routes ────────────────────────────────────────────────────────────────
-app.use('/api/auth',          require('./routes/auth'));
-app.use('/api/programs',      require('./routes/programs'));
-app.use('/api/devotionals',   require('./routes/devotionals'));
-app.use('/api/testimonies',   require('./routes/testimonies'));
-app.use('/api/prayers',       require('./routes/prayers'));
-app.use('/api/registrations', require('./routes/registrations'));
+app.use('/api/auth',                   require('./routes/auth'));
+app.use('/api/programs',               require('./routes/programs'));
+app.use('/api/devotionals',            require('./routes/devotionals'));
+app.use('/api/testimonies',            require('./routes/testimonies'));
+app.use('/api/prayers',                require('./routes/prayers'));
+app.use('/api/registrations',          require('./routes/registrations'));
+app.use('/api/program-registrations',  require('./routes/programRegistrations'));
 
 // ── 404 + Global Error Handler ────────────────────────────────────────────────
 // These MUST be registered after all routes
