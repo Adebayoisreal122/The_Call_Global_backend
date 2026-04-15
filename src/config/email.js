@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-
+const Admin = require('../models/Admin');
 /**
  * Creates and returns a nodemailer transporter.
  * Uses Gmail by default. For other providers update the service/host fields.
@@ -36,7 +36,15 @@ const sendProgramRegistrationEmail = async ({
 }) => {
   const transporter = createTransporter();
 
-  const adminEmail = process.env.ADMIN_EMAIL;
+    const admin = await Admin.findOne().select('email');
+
+  if (!admin || !admin.email) {
+    throw new Error('Admin email not found in database');
+  }
+
+  const adminEmail = admin.email;
+
+  console.log("📧 Sending admin email to:", adminEmail);
 
   // ── Email to Admin ────────────────────────────────────────────────────────
   const adminMailOptions = {
