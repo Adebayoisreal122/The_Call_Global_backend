@@ -28,6 +28,10 @@ const programSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    image: {
+      type: String,  // base64 encoded image string
+      default: '',
+    },
     upcoming: {
       type: Boolean,
       default: true,
