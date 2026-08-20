@@ -20,7 +20,6 @@ app.use(helmet());
 const allowedOrigins = [
   process.env.CLIENT_URL || 'http://localhost:5173',
   'http://localhost:5173',
-  'http://localhost:5174', 
   'http://localhost:4173', // vite preview
 ];
 
@@ -39,8 +38,8 @@ app.use(
 );
 
 // ── Body Parser ───────────────────────────────────────────────────────────────
-app.use(express.json({ limit: '5mb' }));
-app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.json({ limit: '20mb' }));
+app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 // ── Request Logger (dev only) ─────────────────────────────────────────────────
 if (process.env.NODE_ENV === 'development') {
@@ -89,6 +88,7 @@ app.use('/api/devotionals',            require('./routes/devotionals'));
 app.use('/api/testimonies',            require('./routes/testimonies'));
 app.use('/api/prayers',                require('./routes/prayers'));
 app.use('/api/registrations',          require('./routes/registrations'));
+app.use('/api/books',                  require('./routes/books'));
 app.use('/api/program-registrations',  require('./routes/programRegistrations'));
 
 // ── 404 + Global Error Handler ────────────────────────────────────────────────
